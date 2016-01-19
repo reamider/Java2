@@ -48,7 +48,7 @@ public class Zamowienie{
         this.cena = cena;
     }
 	
-	//RELACJA WIELE DO JEDNEGO
+	//RELACJA WIELE DO JEDNEGO ZAMOWIENIE-KLIENT
 	@ManyToOne
     @JoinColumn(name = "idKlient")
     public Klient getKlient() {
@@ -56,5 +56,25 @@ public class Zamowienie{
     }
     public void setKlient(Klient klient) {
         this.klient = klient;
+    }
+	
+	//RELACJA WIELE DO JEDNEGO ZAMOWIENIE-PRACOWNIK
+	@ManyToOne
+    @JoinColumn(name = "idPracownik")
+    public Pracownik getPracownik() {
+        return pracownik;
+    }
+    public void setPracownik(Pracownik pracownik){
+        this.pracownik = pracownik;
+    }
+
+	//RELACJA WIELE DO JEDNEGO ZAMOWIENIE-BILET
+    @ManyToOne
+    @JoinColumn(name = "idBilet")
+    public Bilet getBilet(){
+        return bilet;
+    }
+    public void setBilet(Bilet bilet){
+        this.bilet = bilet;
     }
 }
