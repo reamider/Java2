@@ -26,7 +26,6 @@ public class Employee{
     public Long getidPracownik(){
         return idPracownik;
     }
-
     public void setidPracownik(Long idPracownik) {
         this.idPracownik = idPracownik;
     }

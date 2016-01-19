@@ -26,7 +26,6 @@ public class Klient{
     public Long getidKlient() {
         return idKlient;
     }
-	
     public void setidKlient(Long idKlient) {
         this.idKlient = idKlient;
     }
@@ -67,7 +66,6 @@ public class Klient{
     public List<Zamowienie> getZamowienia() {
         return zamowienia;
     }
-	
     public void setZamowienia(List<Zamowienie> zamowienia) {
         this.zamowienia = zamowienia;
     }
