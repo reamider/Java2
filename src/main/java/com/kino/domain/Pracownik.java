@@ -64,3 +64,16 @@ public class Employee{
         this.datazatrudnienia = datazatrudnienia;
     }
 
+	//fetch type lazy pozwala na pobieranie za pomocą metody na zadanie
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pracownik")
+    @JsonIgnore
+    public List<Zamowienie> getZamowienia() {
+        return zamowienia;
+    }
+	
+    public void setZamowienia(List<Zamowienie> zamowienia) {
+        this.zamowienia = zamowienia;
+    }
+	
+}
+	
