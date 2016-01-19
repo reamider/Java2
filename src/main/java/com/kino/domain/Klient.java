@@ -12,7 +12,7 @@ import java.util.List;
         @NamedQuery(name = "klient.kartaPromocyjna", query = "Select k from Klient k where k.kartaPromocyjna = true")
 })
 
-public class Klient {
+public class Klient{
     private Long idKlient;
     private String Imie;
     private String Nazwisko;
