@@ -14,7 +14,7 @@ public class KlientManager implements KlientDAO{
 	public Klient dodajKlient(Klient klient){
         em.persist(klient);
         em.flush();
-        return customer;
+        return klient;
     }
 	
 	public Klient edytujKlient(Klient klient){
@@ -28,3 +28,12 @@ public class KlientManager implements KlientDAO{
 	public List<Klient> pobierzKlientow(){
         return em.createNamedQuery("klient.pobierzKlientow").getResultList();
     }
+	
+	 public Klient pobierzKlientaPoID(Long id){
+        return em.find(Klient.class, id);
+    }
+	
+	public List<Klient> pobierzKlientaPoIDBiletu(Bilet bilet){
+        return em.createNamedQuery("klient.pobierzPoIDBiletu").setParameter("idBilet", bilet.getidBilet()).getResultList();
+    }
+}

@@ -14,7 +14,7 @@
         <!-- <jta-data-source>java:/DefaultDS</jta-data-source> -->
 
         <!-- Use this data source name for Glassfish -->
-          <jta-data-source>jdbc/musicstore</jta-data-source>
+          <jta-data-source>jdbc/kino</jta-data-source>
 
         <!--<jta-data-source>library-datasource</jta-data-source>-->
 
