@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/css.css">
+    <title>Usuwanie biletu</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="../../skrypty/bilet/usunBilet.js"></script>
+</head>
+<body>
+	<div id="ikony">
+		<a href="../../pokazBilety.html"><img src="../../obrazki/bilet.png"></a>
+		<a href="../../pokazKlientow.html"><img src="../../obrazki/klient.png"></a>
+	</div>
+	<form action="/kino/rest/bilet/usunBilet" method="post">
+		<input type="text" id="idBilet" name="idBilet" style="visibility: hidden;"/>
+		<table>
+			<tr>
+				<td>Numer biletu:</td>
+				<td id="id"></td>
+			</tr>
+			<tr>
+				<td>Rodzaj:</td>
+				<td id="rodzaj"></td>
+			</tr>
+			<tr>
+				<td>Opis:</td>
+				<td id="opis"></td>
+			</tr>
+			<tr>
+				<td>Cena:</td>
+				<td id="cena"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value=" USUN " align="right"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
