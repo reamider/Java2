@@ -15,7 +15,7 @@ public class CustomerResource{
 	@EJB
     private BiletDAO biletManager;
     @EJB
-    private BiletDAO biletManager;
+    private KlientDAO klientManager;
 	
 	@POST
     @Path("/dodajKlient")
