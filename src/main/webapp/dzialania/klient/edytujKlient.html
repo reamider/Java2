@@ -2,19 +2,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="../../css/css.css">
-    <title>Dodaj klienta</title>
+    <title>Edytowanie klienta</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-    <script src="../../skrypty/klient/dodajKlient.js"></script>
+    <script src="../../skrypty/klient/edytujKlient.js"></script>
 </head>
 <body>
 	<div id="ikony">
 		<a href="../../pokazBilety.html"><img src="../../obrazki/bilet.png"></a>
 		<a href="../../pokazKlientow.html"><img src="../../obrazki/klient.png"></a>
 	</div>
-	<form action="/kino/rest/klient/dodajKlient" method="post">
+	<form action="/kino/rest/klient/edytujKlient" method="post">
+		<input type="text" id="idKlient" name="idKlient" style="visibility: hidden;"/>
 		<table>
 			<tr>
-				<td colspan='2'>Dodaj klienta</td>
+				<td colspan='2'>Edycja klienta:</td>
+			</tr>
+			<tr>
+				<td>Numer klienta:</td>
+				<td id="id"></td>
 			</tr>
 			<tr>
 				<td>Bilet:</td>
@@ -33,7 +38,7 @@
 				<td><input type="text" name="nrTelefonu" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value=" DODAJ " align="right"></td>
+				<td colspan="2"><input type="submit" value=" ZAPISZ " align="right"></td>
 			</tr>
 		</table>
 	</form>
