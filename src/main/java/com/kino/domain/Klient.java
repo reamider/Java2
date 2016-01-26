@@ -8,18 +8,16 @@ import java.util.List;
 @Table (name = "Klient")
 @NamedQueries({
         @NamedQuery(name = "klient.pobierzWszystkich", query = "Select k from Klient k"),
-        @NamedQuery(name = "klient.pobierzPoID", query = "Select k from Klient k where k.idKlient = :idKlient"),
-        @NamedQuery(name = "klient.kartaPromocyjna", query = "Select k from Klient k where k.kartaPromocyjna = true")
+		@NamedQuery(name = "klient.pobierzPoID", query = "Select k from Klient k where k.idKlient = :idKlient"),
+		@NamedQuery(name = "klient.pobierzPoIDBiletu", query = "Select k from Klient k where k.bilet = :idBilet")
 })
 
 public class Klient{
     private Long idKlient;
-    private String Imie;
-    private String Nazwisko;
-    private String nrTelefonu;
-    private Boolean kartaPromocyjna = false;
-
-    private List<Zamowienie> zamowienia = new ArrayList<Zamowienie>();
+    private String imie;
+    private String nazwisko;
+    private int nrTelefonu;
+	private Bilet bilet;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,43 +29,32 @@ public class Klient{
     }
 
     public String getImie() {
-        return Imie;
+        return imie;
     }
-    public void setImie(String Imie) {
-        this.Imie = Imie;
+    public void setImie(String imie) {
+        this.imie = imie;
     }
 
     public String getNazwisko() {
-        return Nazwisko;
+        return nazwisko;
     }
-	
-    public void setNazwisko(String Nazwisko) {
-        this.Nazwisko = Nazwisko;
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
     }
 
-    public String getnrTelefonu() {
+    public int getnrTelefonu() {
         return nrTelefonu;
     }
-	
-    public void setnrTelefonu(String nrTelefonu) {
+    public void setnrTelefonu(int nrTelefonu) {
         this.nrTelefonu = nrTelefonu;
     }
 
-    public Boolean getkartaPromocyjna() {
-        return kartaPromocyjna;
+	@ManyToOne
+    @JoinColumn(name = "idBilet")
+    public Bilet getBilet(){
+        return bilet;
     }
-	
-    public void setkartaPromocyjna(Boolean kartaPromocyjna) {
-        this.kartaPromocyjna = kartaPromocyjna;
+    public void setBilet(Bilet bilet){
+        this.bilet = bilet;
     }
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "klient")
-    @JsonIgnore
-    public List<Zamowienie> getZamowienia() {
-        return zamowienia;
-    }
-    public void setZamowienia(List<Zamowienie> zamowienia) {
-        this.zamowienia = zamowienia;
-    }
-	
 }

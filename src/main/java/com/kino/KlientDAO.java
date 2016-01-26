@@ -1,5 +1,4 @@
 package com.kino;
-
 import java.util.List;
 import com.kino.domain.Klient;
 
@@ -9,5 +8,4 @@ public interface KlientDAO{
     Klient edytujKlient(Klient klient);
     List<Klient> pobierzKlientow();
     Klient pobierzKlientaPoID(Long idKlient);
-    List<Klient> pobierzKlientowZkartaPromocyjna();
 }

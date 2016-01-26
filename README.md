@@ -1,4 +1,4 @@
-This very short note is about how to:
+Glassfish i HSLQDB - WYKŁAD:
 
 * start HSQLDB (TCP server, in memory mode) and its simple GUI client  
 * add Connection Pool to said HSQLDB server and define appropriate jdbc JNDI resource in GlassFish 3.1
