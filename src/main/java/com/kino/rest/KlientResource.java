@@ -65,14 +65,14 @@ public class CustomerResource{
 		@GET
 		@Path("/pobierzKlientow")
 		@Produces(MediaType.APPLICATION_JSON)
-		public List<Klient> pobierzKlientow() {
+		public List<Klient> pobierzKlientow(){
 			return klientManager.pobierzKlientow();
 		}
 		
 		@GET
 		@Path("/pobierzKlient/{id}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public Player pobierzKlientaPoID(@PathParam("id") Long id) {
+		public Player pobierzKlientaPoID(@PathParam("id") Long id){
 			return klientManager.pobierzKlientowPoID(id);
 		}
 }
