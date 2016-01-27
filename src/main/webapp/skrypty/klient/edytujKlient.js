@@ -19,7 +19,7 @@ $(document).ready(function(){
     });
 	
 	//Load rest of shop order data
-    $.get("/kino/rest/klient/pobierzKlientow/" + id, function(data, textStatus){
+    $.get("/kino/rest/klient/pobierzKlient/" + id, function(data, textStatus){
        document.getElementById('id').innerHTML = data.idKlient;
        document.getElementById('imie').value = data.imie;
        document.getElementById('nazwisko').value = data.nazwisko;
