@@ -5,7 +5,81 @@
     <link rel="stylesheet" type="text/css" href="css/css.css">
     <title>Klienci Kina</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-    <script src="./skrypty/klient/pokazKlientow.js"></script>
+    <script>
+	$(document).ready(function(){
+      $.get("/kino/rest/klient/pobierzKlientow", function(data, textStatus)
+      {
+              var table = document.getElementById('presentationTable');
+
+              for(var i in data) {
+                    var row = document.createElement("tr");
+                    var cellID = document.createElement("td");
+                    var cellIDText = document.createTextNode(data[i].idKlient);
+                    var cellBilet = document.createElement("td");
+                    var cellBiletText = document.createTextNode(data[i].bilet.rodzaj);
+                    var cellImie = document.createElement("td");
+                    var cellImieText = document.createTextNode(data[i].imie);
+                    var cellNazwisko = document.createElement("td");
+                    var cellNazwiskoText = document.createTextNode(data[i].nazwisko);
+					var cellNrTelefonu = document.createElement("td");
+                    var cellNrTelefonuText = document.createTextNode(data[i].nrTelefonu);
+
+                    cellID.appendChild(cellIDText);
+                    cellBilet.appendChild(cellBiletText);
+                    cellImie.appendChild(cellImieText);
+                    cellNazwisko.appendChild(cellNazwiskoText);
+					cellNrTelefonu.appendChild(cellNrTelefonuText);
+					
+                    //Operation cells:
+
+                    //Read:
+                    var cellRead = document.createElement("td");
+                    var cellReadLink = document.createElement("a");
+
+                    var cellReadPicture = document.createElement("img");
+                    cellReadPicture.setAttribute('src', '/obrazki/zobacz.png');
+
+                    cellReadLink.appendChild(cellReadPicture);
+                    cellReadLink.href = "/kino/dzialania/klient/zobaczKlient.html?id=" + data[i].idKlient;
+                    cellRead.appendChild(cellReadLink);
+
+                    //Update:
+                    var cellUpdate = document.createElement("td");
+                    var cellUpdateLink = document.createElement("a");
+
+                    var cellUpdatePicture = document.createElement("img");
+                    cellUpdatePicture.setAttribute('src', '/obrazki/edytuj.png');
+
+                    cellUpdateLink.appendChild(cellUpdatePicture);
+                    cellUpdateLink.href = "/kino/dzialania/klient/edytujKlient.html?id=" + data[i].idKlient;
+                    cellUpdate.appendChild(cellUpdateLink);
+
+                    //Delete:
+                    var cellDelete = document.createElement("td");
+                    var cellDeleteLink = document.createElement("a");
+
+                    var cellDeletePicture = document.createElement("img");
+                    cellDeletePicture.setAttribute('src', '/obrazki/usun.png');
+
+                    cellDeleteLink.appendChild(cellDeletePicture);
+                    cellDeleteLink.href = "/kino/dzialania/klient/usunKlient.html?id=" + data[i].idKlient;
+                    cellDelete.appendChild(cellDeleteLink);
+
+                    row.appendChild(cellID);
+                    row.appendChild(cellBilet);
+                    row.appendChild(cellImie);
+					row.appendChild(cellNazwisko);
+					row.appendChild(cellNrTelefonu);
+                    row.appendChild(cellRead);
+                    row.appendChild(cellUpdate);
+                    row.appendChild(cellDelete);
+
+                    table.appendChild(row);
+              }
+      });
+});
+
+	</script>
 </head>
 <body>
 	<div>
@@ -17,9 +91,10 @@
 		<a href="./dzialania/klient/dodajKlient.html"><img src="obrazki/dodaj.png">Dodaj klienta></a>
 	</center>
 	
-	<table align="center">
-		<tr>
+	<table class="presentationTable" id="presentationTable" align="center">
+		<tr class="tableheader" id="tableheader">
 			<td>ID Klienta</td>
+			<td>Bilet</td>
 			<td>Imie</td>
 			<td>Nazwisko</td>
 			<td>Numer telefonu</td>

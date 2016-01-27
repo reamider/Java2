@@ -2,13 +2,14 @@ $(document).ready(function()
 		   {
 		       $.get("/kino/rest/bilet/pobierzBilety", function(data, textStatus)
 		       {
-		          var scenaSelect = document.getElementById('biletID');
+		          var biletSelect = document.getElementById('biletID');
 		          for(var i in data) {
 		               var opt = document.createElement('option');
-		               var scenaInfo = data[i].idBilet;
-		               opt.value = scenaInfo;
-		               opt.innerHTML = scenaInfo;
-		               scenaSelect.appendChild(opt);
+		               var biletInfo = data[i].idBilet;
+					   var biletInfo2 = data[i].rodzaj;
+		               opt.value = biletInfo;
+		               opt.innerHTML = biletInfo2;
+		               biletSelect.appendChild(opt);
 		          }
 		       });
 		   });
