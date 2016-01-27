@@ -19,6 +19,7 @@ public class BiletManager implements BiletDAO{
 	
 	public Bilet edytujBilet(Bilet bilet){
         return em.merge(bilet);
+    }
 	
 	public void usunBilet(Bilet bilet){
         em.remove(em.getReference(Bilet.class, bilet.getidBilet()));

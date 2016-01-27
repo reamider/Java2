@@ -1,65 +1,70 @@
-$(document).ready(function(){
-      $.get("/kino/rest/bilet/pobierzBilety", function(data, textStatus){
-              var table = document.getElementById('prezentacja');
+$(document).ready(function()
+{
+      $.get("/kino/rest/bilet/pobierzBilety", function(data, textStatus)
+      {
+              var table = document.getElementById('presentationTable');
 
               for(var i in data) {
-                    var rzad = document.createElement("tr");
-                    var kolumnaID = document.createElement("td");
-                    var kolumnaIDText = document.createTextNode(data[i].idBilet);
-                    var kolumnaRodzaj = document.createElement("td");
-                    var kolumnaRodzajText = document.createTextNode(data[i].rodzaj);
-                    var kolumnaOpis = document.createElement("td");
-                    var kolumnaOpisText = document.createTextNode(data[i].opis);
-                    var kolumnaCena = document.createElement("td");
-                    var kolumnaCenaText = document.createTextNode(data[i].cena);
+                    var row = document.createElement("tr");
 
-                    kolumnaID.appendChild(kolumnaIDText);
-                    kolumnaRodzaj.appendChild(kolumnaRodzajText);
-                    kolumnaOpis.appendChild(kolumnaOpisText);
-                    kolumnaCena.appendChild(kolumnaCenaText);
+                    var cellID = document.createElement("td");
+                    var cellIDText = document.createTextNode(data[i].idBilet);
+                    var cellRodzaj = document.createElement("td");
+                    var cellRodzajText = document.createTextNode(data[i].rodzaj);
+                    var cellOpis = document.createElement("td");
+                    var cellOpis = document.createTextNode(data[i].opis);
+                    var cellCena = document.createElement("td");
+                    var cellCenaText = document.createTextNode(data[i].cena);
 
-                    //Zobacz pojedynczy element:
-                    var kolumnaRead = document.createElement("td");
-                    var kolumnaReadLink = document.createElement("a");
+                    cellID.appendChild(cellIDText);
+                    cellRodzaj.appendChild(cellRodzajText);
+                    cellOpis.appendChild(cellOpisText);
+                    cellCena.appendChild(cellCenaText);
 
-                    var kolumnaReadPictures = document.createElement("img");
-                    kolumnaReadPictures.setAttribute('src', '/kino/obrazki/zobacz.png');
+                    //Operation cells:
 
-                    kolumnaReadLink.appendChild(kolumnaReadPictures);
-                    kolumnaReadLink.href = "../../kino/dzialania/bilet/zobaczBilet.html?id=" + data[i].idBilet;
-                    kolumnaRead.appendChild(kolumnaReadLink);
+                    //Read:
+                    var cellRead = document.createElement("td");
+                    var cellReadLink = document.createElement("a");
 
-                    //Edytuj Bilet:
-                    var kolumnaUpdate = document.createElement("td");
-                    var kolumnaUpdateLink = document.createElement("a");
+                    var cellReadPicture = document.createElement("img");
+                    cellReadPicture.setAttribute('src', '/kino/obrazki/edytuj.png');
 
-                    var kolumnaUpdatePictures = document.createElement("img");
-                    kolumnaUpdatePictures.setAttribute('src', '/kino/obrazki/edytuj.png');
+                    cellReadLink.appendChild(cellReadPicture);
+                    cellReadLink.href = "../../kino/dzialnia/bilet/zobaczBilet.html?id=" + data[i].idBilet;
+                    cellRead.appendChild(cellReadLink);
 
-                    kolumnaUpdateLink.appendChild(kolumnaUpdatePictures);
-                    kolumnaUpdateLink.href = "../../kino/dzialania/bilet/edytujBilet.html?id=" + data[i].idBilet;
-                    kolumnaUpdate.appendChild(kolumnaUpdateLink);
+                    //Update:
+                    var cellUpdate = document.createElement("td");
+                    var cellUpdateLink = document.createElement("a");
 
-                    //Usun Bilet:
-                    var kolumnaDelete = document.createElement("td");
-                    var kolumnaDeleteLink = document.createElement("a");
+                    var cellUpdatePicture = document.createElement("img");
+                    cellUpdatePicture.setAttribute('src', '/kino/obrazki/edytuj.png');
 
-                    var kolumnaDeletePictures = document.createElement("img");
-                    kolumnaDeletePictures.setAttribute('src', '/kino/obrazki/usun.png');
+                    cellUpdateLink.appendChild(cellUpdatePicture);
+                    cellUpdateLink.href = "../../kino/dzialania/bilet/edytujBilet.html?id=" + data[i].idBilet;
+                    cellUpdate.appendChild(cellUpdateLink);
 
-                    kolumnaDeleteLink.appendChild(kolumnaDeletePictures);
-                    kolumnaDeleteLink.href = "../../kino/dzialania/bilet/usunBilet.html?id=" + data[i].idBilet;
-                    kolumnaDelete.appendChild(kolumnaDeleteLink);
+                    //Delete:
+                    var cellDelete = document.createElement("td");
+                    var cellDeleteLink = document.createElement("a");
 
-                    rzad.appendChild(kolumnaID);
-                    rzad.appendChild(kolumnaRodzaj);
-                    rzad.appendChild(kolumnaOpis);
-                    rzad.appendChild(kolumnaCena);
-                    rzad.appendChild(kolumnaRead);
-                    rzad.appendChild(kolumnaUpdate);
-                    rzad.appendChild(kolumnaDelete);
+                    var cellDeletePicture = document.createElement("img");
+                    cellDeletePicture.setAttribute('src', '/kino/obrazki/usun.png');
 
-                    table.appendChild(rzad);
+                    cellDeleteLink.appendChild(cellDeletePicture);
+                    cellDeleteLink.href = "../../kino/dzialania/bilet/usunBilet.html?id=" + data[i].idBilet;
+                    cellDelete.appendChild(cellDeleteLink);
+
+                    row.appendChild(cellID);
+                    row.appendChild(cellRodzaj);
+                    row.appendChild(cellOpis);
+                    row.appendChild(cellCena);
+                    row.appendChild(cellRead);
+                    row.appendChild(cellUpdate);
+                    row.appendChild(cellDelete);
+
+                    table.appendChild(row);
               }
       });
 });

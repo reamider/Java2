@@ -1,6 +1,7 @@
 package com.kino.rest;
 import com.kino.domain.Klient;
 import com.kino.KlientDAO;
+import com.kino.BiletDAO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
@@ -11,9 +12,10 @@ import java.util.List;
 
 @Stateless
 @Path("/klient")
-public class CustomerResource{
+public class KlientResource{
 	@EJB
     private BiletDAO biletManager;
+	
     @EJB
     private KlientDAO klientManager;
 	
@@ -31,8 +33,8 @@ public class CustomerResource{
 			klient.setNazwisko(nazwisko);
 			klient.setnrTelefonu(nrTelefonu);
 			klient.setBilet(biletManager.pobierzBiletPoID(idBilet));
-			biletManager.dodajKlient(klient);
-			return Response.status(Response.status.CREATED).build();
+			klientManager.dodajKlient(klient);
+			return Response.status(Response.Status.CREATED).build();
 		}
 		
 		@POST
@@ -49,7 +51,7 @@ public class CustomerResource{
 			klient.setNazwisko(nazwisko);
 			klient.setnrTelefonu(nrTelefonu);
 			klient.setBilet(biletManager.pobierzBiletPoID(idBilet));
-			biletManager.edytujKlient(klient);
+			klientManager.edytujKlient(klient);
 			return Response.status(Response.Status.OK).build();
 		}
 		
@@ -72,7 +74,8 @@ public class CustomerResource{
 		@GET
 		@Path("/pobierzKlient/{id}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public Player pobierzKlientaPoID(@PathParam("id") Long id){
-			return klientManager.pobierzKlientowPoID(id);
+		public Klient pobierzKlientaPoID(@PathParam("id") Long id){
+			return klientManager.pobierzKlientaPoID(id);
 		}
+		
 }

@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "Bilet")
 @NamedQueries({
-        @NamedQuery(name = "bilet.pobierzWszystkie", query = "Select b from Bilet b"),
-        @NamedQuery(name = "bilet.pobierzPoID", query = "Select b from Bilet b where b.idBilet = :idBilet")
+        @NamedQuery(name = "bilet.pobierzBilety", query = "Select b from Bilet b"),
+        @NamedQuery(name = "bilet.pobierzBiletPoID", query = "Select b from Bilet b where b.idBilet = :idBilet")
 })
 
 public class Bilet{
@@ -51,10 +50,10 @@ public class Bilet{
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bilet")
     @JsonIgnore
-    public List<Klient> getKlient(){
+    public List<Klient> getKlients(){
         return klienci;
     }
-    public void setKlienci(List<Klient> klienci){
+    public void setKlients(List<Klient> klienci){
         this.klienci = klienci;
     }
 }
