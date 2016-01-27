@@ -22,17 +22,17 @@ public class KlientResource{
 	@POST
     @Path("/dodajKlient")
     public Response dodajKlient(
+		@FormParam("biletID") String bilet,
 		@FormParam("imie") String imie,
 		@FormParam("nazwisko") String nazwisko,
-		@FormParam("nrTelefonu") int nrTelefonu,
-		@FormParam("bilet") String bilet)
+		@FormParam("nrTelefonu") int nrTelefonu)
 		{
-			Long idBilet = Long.parseLong(bilet.substring(0, bilet.indexOf('.')));
+			Long biletID = Long.parseLong(bilet);
 			Klient klient = new Klient();
+			klient.setBilet(biletManager.pobierzBiletPoID(biletID));
 			klient.setImie(imie);
 			klient.setNazwisko(nazwisko);
 			klient.setnrTelefonu(nrTelefonu);
-			klient.setBilet(biletManager.pobierzBiletPoID(idBilet));
 			klientManager.dodajKlient(klient);
 			return Response.status(Response.Status.CREATED).build();
 		}
@@ -45,12 +45,12 @@ public class KlientResource{
                                      @FormParam("nrTelefonu") int nrTelefonu,
     								 @FormParam("bilet") String bilet)
 		{
-			Long idBilet = Long.parseLong(bilet.substring(0, bilet.indexOf('.')));
+			Long biletID = Long.parseLong(bilet);
 			Klient klient = klientManager.pobierzKlientaPoID(idKlient);
 			klient.setImie(imie);
 			klient.setNazwisko(nazwisko);
 			klient.setnrTelefonu(nrTelefonu);
-			klient.setBilet(biletManager.pobierzBiletPoID(idBilet));
+			klient.setBilet(biletManager.pobierzBiletPoID(biletID));
 			klientManager.edytujKlient(klient);
 			return Response.status(Response.Status.OK).build();
 		}

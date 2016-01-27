@@ -9,7 +9,7 @@
 		<a href="../../pokazBilety.html"><img src="../../obrazki/bilet.png"></a>
 		<a href="../../pokazKlientow.html"><img src="../../obrazki/klient.png"></a>
 	</div>
-	<form action="/kino/rest/bilet/dodajBilet" method="post">
+	<form action="/kino/rest/bilet/dodajBilet" target="/kino/pokazBilety.html" method="post">
 		<table>
 			<tr>
 				<td colspan='2'><h3>Dodawanie biletu:</h3></td>
@@ -27,7 +27,7 @@
 				<td><input type="text" name="cena" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value=" DODAJ " align="right"></td>
+				<td colspan="2"><a href="/kino/pokazBilety.html"><input type="submit" value=" DODAJ " align="right"></a></td>
 			</tr>
 		</table>
 	</form>

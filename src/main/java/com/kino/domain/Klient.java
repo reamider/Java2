@@ -7,9 +7,9 @@ import java.util.List;
 @Entity
 @Table (name = "Klient")
 @NamedQueries({
-        @NamedQuery(name = "klient.pobierzWszystkich", query = "Select k from Klient k"),
-		@NamedQuery(name = "klient.pobierzPoID", query = "Select k from Klient k where k.idKlient = :idKlient"),
-		@NamedQuery(name = "klient.pobierzPoIDBiletu", query = "Select k from Klient k where k.bilet = :idBilet")
+        @NamedQuery(name = "klient.pobierzKlientow", query = "Select k from Klient k"),
+		@NamedQuery(name = "klient.pobierzKlientaPoID", query = "Select k from Klient k where k.idKlient = :idKlient"),
+		@NamedQuery(name = "klient.pobierzKlientaPoIDBiletu", query = "Select k from Klient k where k.bilet = :idBilet")
 })
 
 public class Klient{

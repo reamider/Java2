@@ -5,6 +5,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.hibernate.Hibernate;
+import com.kino.domain.Bilet;
 
 @Stateless
 public class BiletManager implements BiletDAO{

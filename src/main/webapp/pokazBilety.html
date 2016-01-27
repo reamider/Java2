@@ -27,10 +27,46 @@ $(document).ready(function()
 		                    cellWielkosc.appendChild(cellWielkoscText);
 							cellCena.appendChild(cellCenaText);
 		  
+							//Read:
+							var cellRead = document.createElement("td");
+							var cellReadLink = document.createElement("a");
+
+							var cellReadPicture = document.createElement("img");
+							cellReadPicture.setAttribute('src', '/obrazki/zobacz.png');
+	
+							cellReadLink.appendChild(cellReadPicture);
+							cellReadLink.href = "/kino/dzialania/bilet/zobaczBilet.html?id=" + data[i].idBilet;
+							cellRead.appendChild(cellReadLink);
+					
+					 //Update:
+                    var cellUpdate = document.createElement("td");
+                    var cellUpdateLink = document.createElement("a");
+
+                    var cellUpdatePicture = document.createElement("img");
+                    cellUpdatePicture.setAttribute('src', '/obrazki/edytuj.png');
+
+                    cellUpdateLink.appendChild(cellUpdatePicture);
+                    cellUpdateLink.href = "/kino/dzialania/bilet/edytujBilet.html?id=" + data[i].idBilet;
+                    cellUpdate.appendChild(cellUpdateLink);
+					
+					//Delete:
+                    var cellDelete = document.createElement("td");
+                    var cellDeleteLink = document.createElement("a");
+
+                    var cellDeletePicture = document.createElement("img");
+                    cellDeletePicture.setAttribute('src', '/obrazki/usun.png');
+
+                    cellDeleteLink.appendChild(cellDeletePicture);
+                    cellDeleteLink.href = "/kino/dzialania/bilet/usunBilet.html?id=" + data[i].idBilet;
+                    cellDelete.appendChild(cellDeleteLink);
+
 		                    row.appendChild(cellID);
 		                    row.appendChild(cellNazwa);
 		                    row.appendChild(cellWielkosc);
 							row.appendChild(cellCena);
+							row.appendChild(cellRead);
+							row.appendChild(cellUpdate);
+							row.appendChild(cellDelete);
 		                    table.appendChild(row);
 		              }
 		      });
@@ -40,7 +76,9 @@ $(document).ready(function()
 
 <body>
 
-
+	<center>
+		<a href="./dzialania/bilet/dodajBilet.html"><img src="obrazki/dodaj.png">Dodaj bilet></a>
+	</center>
 
     <table class="presentationTable" id="presentationTable" align="center">
             <tr class="tableheader" id="tableheader">
@@ -48,6 +86,7 @@ $(document).ready(function()
                 <td>Nazwa</td>
                 <td>Wielkosc</td>
 				<td>Cena</td>
+				<td colspan="3">Działania:</td>
             </tr>
 
 

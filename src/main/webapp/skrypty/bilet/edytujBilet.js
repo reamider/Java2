@@ -4,8 +4,8 @@ $(document).ready(function(){
 	
 	$.get("/kino/rest/bilet/pobierzBilet/" + id, function(data, textStatus){
        document.getElementById('id').innerHTML = data.idBilet;
-       document.getElementById('imie').value = data.imie;
-       document.getElementById('nazwisko').value = data.nazwisko;
-       document.getElementById('nrTelefonu').value = data.nrTelefonu;
+       document.getElementById('rodzaj').value = data.rodzaj;
+       document.getElementById('opis').value = data.opis;
+       document.getElementById('cena').value = data.cena;
     });
 });
